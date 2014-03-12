@@ -124,7 +124,7 @@ static NSString * const kPTLTableViewDatasourceFooterIdentifier = @"kPTLTableVie
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
   if (self.tableViewCanEditRowBlock) {
-    id item = [self itemAtIndexPath:item];
+    id item = [self itemAtIndexPath:indexPath];
     return self.tableViewCanEditRowBlock(tableView, item, indexPath);
   }
   return NO;
@@ -132,7 +132,7 @@ static NSString * const kPTLTableViewDatasourceFooterIdentifier = @"kPTLTableVie
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
   if (self.tableViewCommitEditingStyleBlock) {
-    id item = [self itemAtIndexPath:item];
+    id item = [self itemAtIndexPath:indexPath]];
     self.tableViewCommitEditingStyleBlock(tableView, editingStyle, item, indexPath);
   }
 }
