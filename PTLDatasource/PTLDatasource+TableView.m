@@ -104,4 +104,19 @@ static NSString * const kPTLTableViewDatasourceFooterIdentifier = @"kPTLTableVie
    return [self tableViewFooterTitleForSection:sectionIndex];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (self.tableViewCanEditRowBlock) {
+    id item = [self itemAtIndexPath:item];
+    return self.tableViewCanEditRowBlock(tableView, item, indexPath);
+  }
+  return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (self.tableViewCommitEditingStyleBlock) {
+    id item = [self itemAtIndexPath:item];
+    self.tableViewCommitEditingStyleBlock(tableView, editingStyle, item, indexPath);
+  }
+}
+
 @end
