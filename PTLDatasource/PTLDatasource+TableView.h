@@ -9,9 +9,6 @@
 #import "PTLDatasource.h"
 #import "PTLTableViewDatasource.h"
 
-typedef BOOL(^PTLTableViewCanEditRowBlock)(UITableView *tableView, id item, NSIndexPath *indexPath);
-typedef void(^PTLTableViewCommitEditingStyleBlock)(UITableView *tableView, UITableViewCellEditingStyle editingStyle, id item, NSIndexPath *indexPath);
-
 @interface PTLDatasource (TableView) <PTLTableViewDatasource>
 
 @property (nonatomic, copy) NSString *tableViewHeaderTitle;

@@ -82,6 +82,18 @@ static NSString * const kPTLTableViewDatasourceFooterIdentifier = @"kPTLTableVie
    return self.tableViewCellConfigBlock;
 }
 
+- (PTLTableViewCanEditRowBlock)tableViewCanEditRowBlockForIndexPath:(NSIndexPath *)indexPath {
+    NSParameterAssert(indexPath.section < [self numberOfSections]);
+    NSParameterAssert(indexPath.item < [self numberOfItemsInSection:indexPath.section]);
+    return self.tableViewCanEditRowBlock;
+}
+
+- (PTLTableViewCommitEditingStyleBlock)tableViewCommitEditingStyleBlockForIndexPath:(NSIndexPath *)indexPath {
+    NSParameterAssert(indexPath.section < [self numberOfSections]);
+    NSParameterAssert(indexPath.item < [self numberOfItemsInSection:indexPath.section]);
+    return self.tableViewCommitEditingStyleBlock;
+}
+
 - (NSString *)tableViewHeaderTitleForSection:(NSInteger)sectionIndex {
    NSParameterAssert(sectionIndex < [self numberOfSections]);
    return self.tableViewHeaderTitle;
