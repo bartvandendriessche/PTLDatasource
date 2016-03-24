@@ -120,23 +120,17 @@
 #pragma mark - PTLDatasourceObserver
 
 - (void)datasourceWillChange:(id<PTLDatasource>)datasource {
-    NSLog(@"%@ will change", self);
-
     [self notifyObserversOfChangesBeginning];
     self.mutableMapping = [self.mapping mutableCopy];
 }
 
 - (void)datasourceDidChange:(id<PTLDatasource>)datasource {
-    NSLog(@"%@ did change", self);
-
     self.mapping = [self.mutableMapping copy];
     self.mutableMapping = nil;
     [self notifyObserversOfChangesEnding];
 }
 
 - (void)datasource:(id<PTLDatasource>)datasource didChange:(PTLChangeType)change atIndexPath:(NSIndexPath *)indexPath newIndexPath:(NSIndexPath *)newIndexPath {
-    NSLog(@"%@ changed item %d at: %@ new: %@", self, change, indexPath, newIndexPath);
-
     switch(change) {
         case PTLChangeTypeInsert: {
             // Attempt to add the item and verify that there is a valid insertion indexpath.
@@ -182,8 +176,6 @@
 }
 
 - (void)datasource:(id<PTLDatasource>)datasource didChange:(PTLChangeType)change atSectionIndex:(NSInteger)sectionIndex {
-    NSLog(@"%@ changed section %d at: %d", self, change, sectionIndex);
-
     NSUInteger resultSectionIndex = NSNotFound;
     switch(change) {
         case PTLChangeTypeInsert:
